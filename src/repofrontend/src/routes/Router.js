@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 const HomeLayout = lazy(() => import("../layouts/HomeLayout.js"));
-const LoginLayout = lazy(() => import("../layouts/LoginLayout.js"));
+const AuthLayout = lazy(() => import("../layouts/AuthLayout.js"));
 /***** Pages ****/
 
 const Home = lazy(() => import("../views/home/Home.js"));
@@ -13,20 +13,22 @@ const Product = lazy(() => import("../views/Product.js"));
 const ProductAdd = lazy(() => import("../views/ProductAdd.js"));
 const ProductDetail = lazy(() => import("../views/home/ProductDetail.js"));
 const Category = lazy(() => import("../views/Category.js"));
-const Login1 = lazy(() => import("../views/Login1.js"));
+const Login = lazy(() => import("../views/Login"));
+const Register = lazy(() => import("../views/Register"));
 
 /*****Routes******/
 
 const ThemeRoutes = [
   {
-    path: "/",
-    element: <LoginLayout />,
-    children: [{ path: "", element: <Login1 /> },
-    { path: "product/:id", exact: true, element: <ProductDetail /> },
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
     ],
   },
   {
-    path: "/Home",
+    path: "/",
     element: <HomeLayout />,
     children: [{ path: "", element: <Home /> },
     { path: "product/:id", exact: true, element: <ProductDetail /> },

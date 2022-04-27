@@ -60,11 +60,8 @@ const Header = () => {
           )}
         </Button>
       </div>
-
       <Collapse navbar isOpen={isOpen}>
-        <Nav className="me-auto" navbar>
-
-        </Nav>
+        <Nav className="me-auto" navbar></Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="transparent">
             <img
@@ -88,4 +85,6 @@ const Header = () => {
     </Navbar>
   );
 };
+
 export default Header;
+

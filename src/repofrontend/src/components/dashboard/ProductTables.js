@@ -55,7 +55,6 @@ const ProductTables = () => {
               <CardSubtitle className="mb-2 text-muted me-auto" tag="h6">
                 Tất cả sản phẩm có trong cửa hàng
               </CardSubtitle>
-
               <Breadcrumb >
                 <BreadcrumbItem><a href="/admin">Dashboard</a></BreadcrumbItem>
                 <BreadcrumbItem active>Product</BreadcrumbItem>
