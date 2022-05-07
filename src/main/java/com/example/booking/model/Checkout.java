@@ -2,8 +2,11 @@ package com.example.booking.model;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @RequiredArgsConstructor
@@ -37,4 +40,10 @@ public class Checkout {
 
     @Column(name = "total_price")
     private float totalPrice;
+
+    @Column(updatable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }
