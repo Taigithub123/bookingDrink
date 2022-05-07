@@ -1,0 +1,102 @@
+import React, { useContext } from "react";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  Table,
+  Button,
+  ButtonGroup,
+} from "reactstrap";
+import {
+  CartStateContext,
+  CartDispatchContext,
+  removeFromCart,
+  toggleCartPopup,
+  decrementQty,
+  incrementQty,
+} from "../contexts/cart";
+
+import { BiTrash } from "react-icons/bi";
+
+const CartPreview = () => {
+  const { items, isCartOpen } = useContext(CartStateContext);
+  const dispatch = useContext(CartDispatchContext);
+
+  const handleRemove = (productId) => {
+    return removeFromCart(dispatch, productId);
+  };
+
+  const handleDecreament = (productId) => {
+    return decrementQty(dispatch, productId);
+  };
+
+  const handleIncreament = (productId) => {
+    return incrementQty(dispatch, productId);
+  };
+
+  const handleProceedCheckout = () => {
+    toggleCartPopup(dispatch);
+  };
+  return (
+    <div>
+      <Card style={{ overflowY: "auto", height: "350px" }}>
+        <CardBody>
+          <CardTitle tag="h5">Giỏ Hàng Của Bạn</CardTitle>
+
+          <Table className="no-wrap mt-3 align-middle" responsive borderless>
+            <tbody>
+              {items.map((product, index) => (
+                <tr key={index} className="border-top">
+                  <td>
+                    <div className="d-flex align-items-center p-2">
+                      <img
+                        src={product.props.image}
+                        className="rounded-circle"
+                        alt="avatar"
+                        width="45"
+                        height="45"
+                      />
+                      <div className="ms-3">
+                        <h6 className="mb-0">{product.props.title}</h6>
+                        <span className="text-muted">
+                          {product.props.text}.000₫
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{product.quantity}</td>
+                  <td>
+                    <ButtonGroup>
+                      <Button
+                        size="sm"
+                        onClick={() => handleDecreament(product.props.id)}
+                      >
+                        -
+                      </Button>
+                      <Button
+                        color="warning"
+                        size="sm"
+                        onClick={() => handleIncreament(product.props.id)}
+                      >
+                        +
+                      </Button>
+                      <Button
+                        color="primary"
+                        size="sm"
+                        onClick={() => handleRemove(product.props.id)}
+                      >
+                        <BiTrash />
+                      </Button>
+                    </ButtonGroup>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
+
+export default CartPreview;
