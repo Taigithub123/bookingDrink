@@ -26,20 +26,22 @@ public class Checkout {
     @Column(name = "address", columnDefinition="TEXT")
     private String address;
 
-    @Column(name="province")
-    private String province;
-
-    @Column(name="district")
-    private String district;
-
-    @Column(name="commune")
-    private String commune;
+//    @Column(name="province")
+//    private String province;
+//
+//    @Column(name="district")
+//    private String district;
+//
+//    @Column(name="commune")
+//    private String commune;
 
     @Column(name="phone")
     private String phone;
 
     @Column(name = "total_price")
     private float totalPrice;
+    @Column(name = "status")
+    private String status;
 
     @Column(updatable = false)
     @CreationTimestamp

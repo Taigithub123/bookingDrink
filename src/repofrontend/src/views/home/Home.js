@@ -1,4 +1,4 @@
-import { Row, Col, Nav, NavItem, NavLink, Modal, ModalBody } from "reactstrap";
+import { Row, Col, Nav, NavItem, NavLink, Modal, ModalBody, Card, CardTitle, CardBody, CardSubtitle } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Product from "../../components/dashboard/Product";
@@ -42,32 +42,37 @@ const Home = () => {
         {/* --------------------------------------------------------------------------------*/}
         {/* Card-1*/}
         {/* --------------------------------------------------------------------------------*/}
+
         <Col
           style={{
-            marginTop: "65px",
-            marginLeft: "20px",
-            width: "13%",
+            marginTop: "80px",
+            marginLeft: "15px",
+            width: "14%",
             float: "left",
             position: "fixed",
             zIndex: "100",
           }}
         >
-          <hr />
-          <p>Danh Mục Sản Phẩm</p>
-
-          <Nav vertical>
-            <NavItem style={{ cursor: "pointer" }}>
-              <NavLink onClick={() => setFilterData(products)}>Tất Cả</NavLink>
-            </NavItem>
-            {category.map((item) => (
-              <NavItem style={{ cursor: "pointer" }}>
-                <NavLink onClick={() => filterItem(item.name)}>
-                  {item.name}
-                </NavLink>
-              </NavItem>
-            ))}
-          </Nav>
-          <hr />
+          <Card style={{ border: "2px #DDDDDD solid" }}>
+            <CardBody>
+              <CardTitle style={{ marginLeft: "40px" }}> Danh Mục </CardTitle>
+              <hr />
+              <CardSubtitle>
+                <Nav vertical>
+                  <NavItem style={{ cursor: "pointer" }}>
+                    <NavLink onClick={() => setFilterData(products)}>Tất Cả</NavLink>
+                  </NavItem>
+                  {category.map((item) => (
+                    <NavItem style={{ cursor: "pointer" }}>
+                      <NavLink onClick={() => filterItem(item.name)}>
+                        {item.name}
+                      </NavLink>
+                    </NavItem>
+                  ))}
+                </Nav>
+              </CardSubtitle>
+            </CardBody>
+          </Card>
         </Col>
 
         <Col

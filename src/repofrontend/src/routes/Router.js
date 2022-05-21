@@ -8,6 +8,7 @@ const AuthLayout = lazy(() => import("../layouts/AuthLayout.js"));
 /***** Pages ****/
 
 const Home = lazy(() => import("../views/home/Home.js"));
+const Checkout = lazy(() => import("../views/home/Checkout.js"));
 const Starter = lazy(() => import("../views/Starter.js"));
 const Product = lazy(() => import("../views/Product.js"));
 const ProductAdd = lazy(() => import("../views/ProductAdd.js"));
@@ -15,6 +16,7 @@ const ProductDetail = lazy(() => import("../views/home/ProductDetail.js"));
 const Category = lazy(() => import("../views/Category.js"));
 const Login = lazy(() => import("../views/Login"));
 const Register = lazy(() => import("../views/Register"));
+const CheckoutList = lazy(() => import("../views/CheckoutList"));
 
 /*****Routes******/
 
@@ -32,6 +34,7 @@ const ThemeRoutes = [
     element: <HomeLayout />,
     children: [{ path: "", element: <Home /> },
     { path: "product/:id", exact: true, element: <ProductDetail /> },
+    { path: "checkout", exact: true, element: <Checkout /> },
     ],
   },
   {
@@ -43,6 +46,8 @@ const ThemeRoutes = [
       { path: "product", exact: true, element: <Product /> },
       { path: "product/add", exact: true, element: <ProductAdd /> },
       { path: "category", exact: true, element: <Category /> },
+      { path: "checkout-list", exact: true, element: <CheckoutList /> },
+
     ],
   },
 ];
